@@ -134,25 +134,25 @@ def main(operation, src, target):
         if operation == "Sobel":
             # call sobel function to detect edge on image
             cv2.imwrite(f"{target}/{operation + '_' + filename}.jpg", Sobel(img))
-            if operation == "Split":
-                # call split function to split image
-                r, g, b = Split(img)
-                cv2.imwrite(f"{target}/{operation + '_' + 'g'+ filename}.jpg", g)
-                cv2.imwrite(f"{target}/{operation + '_' + 'b'+ filename}.jpg", b)
-                cv2.imwrite(f"{target}/{operation + '_' +'r'+ filename}.jpg", r)
-            if operation == "Threshold":
-                # type which we have to apply for blur the image
-                types = input("Enter the type (THRESH_MASK, THRESH_BINARY, THRESH_TRUNC, THRESH_OTSU, THRESH_TOZERO,"
+        if operation == "Split":
+            # call split function to split image
+            r, g, b = Split(img)
+            cv2.imwrite(f"{target}/{operation + '_' + 'g'+ filename}.jpg", g)
+            cv2.imwrite(f"{target}/{operation + '_' + 'b'+ filename}.jpg", b)
+            cv2.imwrite(f"{target}/{operation + '_' +'r'+ filename}.jpg", r)
+        if operation == "Threshold":
+            # type which we have to apply for blur the image
+            types = input("Enter the type (THRESH_MASK, THRESH_BINARY, THRESH_TRUNC, THRESH_OTSU, THRESH_TOZERO,"
                               "ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_TRIANGLE, THRESH_TOZERO_INV, THRESH_BINARY_INV) : ")
-                # call flip function to flip image
-                cv2.imwrite(f"{target}/{operation + '_'+ types+'_' + filename}.jpg", Threshold(img, types))
-            if operation == "Translate":
-                # give threshold value
-                x, y = map(int,
+            # call flip function to flip image
+            cv2.imwrite(f"{target}/{operation + '_'+ types+'_' + filename}.jpg", Threshold(img, types))
+        if operation == "Translate":
+            # give threshold value
+            x, y = map(int,
                            input("enter value -x -> left, -y -> up, x -> right, y -> down  for translation:")
                            .split(" "))
-                # call translate function to translate image in x and y direction
-                cv2.imwrite(f"{target}/{operation + '_' + filename}.jpg", Translate(img, x, y))
+            # call translate function to translate image in x and y direction
+            cv2.imwrite(f"{target}/{operation + '_' + filename}.jpg", Translate(img, x, y))
 
 
 if __name__ == "__main__":
